@@ -1,0 +1,4 @@
+#!/command/with-contenv sh
+
+echo "-- Connexion au serveur ${SERVER_IP}"
+ii -i /app/servers -s ${SERVER_IP} -p ${SERVER_PORT} -n ${NICKNAME} -f ${NICKNAME}
