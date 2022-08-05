@@ -15,10 +15,15 @@ When connected on your chan you can send and read messages.
  The /app volume is mapped to /home/alpine/appdata/ii for me.
  By example this is my **/home/alpine/appdata/ii/servers/** content :
 >  └── 192.168.1.43
+
 >     ├── #test
+
 >     │   ├── in
+
 >     │   └── out
+
 >     ├── in
+
 >     └── out
 >     
 **192.168.1.43** is the host/ip of my IRC server and ii joined the **#test** channel.
