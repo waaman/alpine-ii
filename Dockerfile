@@ -8,7 +8,7 @@ ENV SERVER_PORT="6667"
 ENV SERVER_CHAN="#test"
 ENV NICKNAME="II-Bot"
 
-RUN mkdir /app && chmod -R 0777 /app
+RUN echo "${TZ}" > /etc/timezone && mkdir /app && chmod -R 0777 /app
 
 ###############################################################################################################
 ##### Paquets nécessaires
