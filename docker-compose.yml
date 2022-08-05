@@ -1,0 +1,17 @@
+version: "3.6"
+
+services:
+  ii:
+    image: waaman/alpine-ii:latest
+    container_name: ii-irc
+    environment:
+      - PUID=99
+      - PGID=100
+      - TZ=Europe/Paris
+      - SERVER_IP=192.168.1.43
+      - SERVER_PORT=6667
+      - SERVER_CHAN=#test
+      - NICKNAME=II-Bot
+    volumes:
+      - ./ii:/app
+    restart: unless-stopped
