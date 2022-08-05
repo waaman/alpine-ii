@@ -8,14 +8,14 @@ ENV SERVER_PORT="6667"
 ENV SERVER_CHAN="#test"
 ENV NICKNAME="II-Bot"
 
-RUN echo "${TZ}" > /etc/timezone && mkdir /app && chmod -R 0777 /app
+RUN echo "${TZ}" > /etc/timezone \
+    && mkdir /app \
+    && chmod -R 0777 /app
 
 ###############################################################################################################
 ##### Paquets nécessaires
 ###############################################################################################################
-RUN apk add --update --no-cache sudo \
-    tar \
-    xz
+RUN apk add --update --no-cache tar xz sudo
 
 
 ###############################################################################################################
@@ -60,6 +60,8 @@ RUN set -eux \
 ##### Copie des fichiers de rootfs/ vers / du container
 ###############################################################################################################
 COPY rootfs /
+
+
 
 VOLUME [ "/app" ]
 ENTRYPOINT [ "/init" ]
