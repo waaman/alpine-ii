@@ -13,7 +13,5 @@ if [ -n "${PUID}" ] && [ "${PUID}" != "$(id -u ${USERNAME})" ]; then
   sed -i -e "s/^${USERNAME}:\([^:]*\):[0-9]*:\([0-9]*\)/${USERNAME}:\1:${PUID}:\2/" /etc/passwd
 fi
 
-echo "--- On modifie les permissions du dossier /app/"
-chmod -R 0777 /app/
-#chgrp users /app/servers/
-#chmod g+s /app/servers/
+#echo "--- On modifie les permissions du dossier /app/"
+#chmod -R 0777 /app/
