@@ -14,7 +14,7 @@ ENV NICKNAME="II-Bot"
 RUN echo "${TZ}" > /etc/timezone \
     && mkdir /app \
     && chmod -R 0777 /app \
-    && apk add --update --no-cache tar xz sudo
+    && apk add --update --no-cache --virtual .build_deps tar xz
 
 ###############################################################################################################
 ##### s6-overlaye
@@ -33,6 +33,7 @@ ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLA
 RUN tar -C / -Jxpf /tmp/s6-overlay-symlinks-arch.tar.xz
 
 RUN rm -rf /tmp/*
+RUN apk del .build_deps
 
 ###############################################################################################################
 ##### User alpine
@@ -40,8 +41,6 @@ RUN rm -rf /tmp/*
 RUN adduser --disabled-password -h /app -u ${PUID} -G `getent group ${PGID} | cut -d: -f1` -s /bin/ash alpine
 RUN passwd -d alpine
 RUN echo 'alpine:123456' | chpasswd
-RUN echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
-RUN adduser alpine wheel
 
 ###############################################################################################################
 ##### Installation de ii
